@@ -1,0 +1,16 @@
+name: build
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened, edited]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Gmeek
+        uses: Meekdai/Gmeek@v2.22
+        with:
+          index_id: ${{ github.event.issue.number }}
+          access_token: ${{ secrets.GITHUB_TOKEN }}
